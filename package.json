@@ -1,0 +1,44 @@
+{
+  "name": "git-tag-changelog",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "description": "Create change logs using git tag annotations",
+  "homepage": "https://github.com/DonutEspresso/git-tag-changelog",
+  "author": {
+    "name": "Alex Liu",
+    "email": "donutespresso@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:DonutEspresso/git-tag-changelog.git"
+  },
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "git-tag-changelog",
+    "git",
+    "changelog",
+    "release",
+    "semver"
+  ],
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "conventional-changelog-angular": "^5.0.0",
+    "conventional-recommended-bump": "^4.0.0",
+    "coveralls": "^3.0.1",
+    "documentation": "^8.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
+    "prettier": "^1.13.5",
+    "unleash": "^2.0.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "lumberjill": "^1.1.2"
+  }
+}
