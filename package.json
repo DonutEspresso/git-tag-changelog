@@ -40,7 +40,10 @@
     "prettier": "^1.13.5"
   },
   "dependencies": {
+    "assert-plus": "^1.0.0",
+    "dashdash": "^1.14.1",
     "lodash": "^4.17.11",
-    "lumberjill": "^1.1.2"
+    "lumberjill": "^1.1.2",
+    "semver": "^5.6.0"
   }
 }
