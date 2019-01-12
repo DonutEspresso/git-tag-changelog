@@ -71,14 +71,14 @@ if (cliArgs.help === true) {
     // go to stderr
     console.log(
         'usage: cl [ACTION] [OPTIONS]\n\n' +
-            "action: 'list' | 'delta' | release' | 'nuclear' \n" +
+            "actions: 'list' | 'delta' | 'release' | 'nuclear' \n" +
             'options:\n' +
             parser.help() +
-            '\nsample usage:\n\n' +
+            '\nsample usage:\n' +
             '    * show all git tags that look like releases (semver):\n' +
             '        cl list\n' +
-            '    * compare commits between two tags:\n' +
-            '        cl delta --v1=6.0.0 --v2=7.0.0\n' +
+            '    * show semantic changes between two tags:\n' +
+            '        cl delta --v1=4.0.0 --v2=6.0.0\n' +
             '    * create a changelog, and put it in annotation of a new git tag:\n' +
             '        cl release --next=8.0.0\n' +
             '    * DANGER: loop through all existing tags and recreate changelogs:\n' +
@@ -87,6 +87,7 @@ if (cliArgs.help === true) {
     process.exit();
 }
 
-// run the program
+// initialize the logger
 log.init(cliArgs.logLevel);
+// run the program
 commands(cliArgs);
