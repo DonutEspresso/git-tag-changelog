@@ -1,6 +1,6 @@
 {
   "name": "git-tag-changelog",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "lib/index.js",
   "description": "Create change logs using git tag annotations",
   "homepage": "https://github.com/DonutEspresso/git-tag-changelog",
