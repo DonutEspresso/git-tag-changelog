@@ -5,7 +5,7 @@
 const dashdash = require('dashdash');
 
 // internal files
-const changelog = require('../lib/changelog');
+const commands = require('../lib/commands');
 const log = require('../lib/log');
 
 // local globals
@@ -27,12 +27,7 @@ const cliOptions = [
     {
         names: ['dry', 'd'],
         type: 'bool',
-        help: 'Dry run. Outputs tags/changelogs to stdout. Defaults to false.'
-    },
-    {
-        names: ['prefix', 'p'],
-        type: 'string',
-        help: 'Prefix attached to semver string by tooling. Usually `v`.'
+        help: 'Dry run. Does not actually execute command.'
     },
     {
         names: ['logLevel', 'l'],
@@ -42,7 +37,7 @@ const cliOptions = [
     {
         names: ['v1'],
         type: 'string',
-        help: `For 'delta' or 'release' action. A semver version.`
+        help: `For 'delta' action. A semver version.`
     },
     {
         names: ['v2'],
@@ -50,19 +45,19 @@ const cliOptions = [
         help: `For 'delta' action. A semver version.`
     },
     {
-        names: ['last'],
+        names: ['next'],
         type: 'string',
-        help: `For 'release' action. Last version to generate changelog against`
-    },
-    {
-        names: ['new'],
-        type: 'string',
-        help: `For 'release' action. New version to tag and create.`
+        help: `For 'release' action. The semver of the release.`
     },
     {
         names: ['raw'],
         type: 'bool',
-        help: `Display raw results instead.`
+        help: 'Display raw results instead.'
+    },
+    {
+        names: ['yesReally'],
+        type: 'bool',
+        help: `Confirmation flag for the 'nuclear' action.`
     }
 ];
 
@@ -76,16 +71,22 @@ if (cliArgs.help === true) {
     // go to stderr
     console.log(
         'usage: cl [ACTION] [OPTIONS]\n\n' +
-            "action: 'tags' | 'list' | 'release' | 'delta'\n" +
+            "action: 'list' | 'delta' | release' | 'nuclear' \n" +
             'options:\n' +
             parser.help() +
             '\nsample usage:\n\n' +
-            '    compare commits between two tags:\n' +
-            '        cl delta 6.0.0 7.0.0'
+            '    * show all git tags that look like releases (semver):\n' +
+            '        cl list\n' +
+            '    * compare commits between two tags:\n' +
+            '        cl delta --v1=6.0.0 --v2=7.0.0\n' +
+            '    * create a changelog, and put it in annotation of a new git tag:\n' +
+            '        cl release --next=8.0.0\n' +
+            '    * DANGER: loop through all existing tags and recreate changelogs:\n' +
+            '        cl nuclear --yesReally=true'
     );
     process.exit();
 }
 
 // run the program
 log.init(cliArgs.logLevel);
-changelog(cliArgs);
+commands(cliArgs);
