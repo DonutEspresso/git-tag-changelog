@@ -6,9 +6,17 @@
 [![Dependency Status](https://david-dm.org/DonutEspresso/git-tag-changelog.svg)](https://david-dm.org/DonutEspresso/git-tag-changelog)
 [![devDependency Status](https://david-dm.org/DonutEspresso/git-tag-changelog/dev-status.svg)](https://david-dm.org/DonutEspresso/git-tag-changelog#info=devDependencies)
 
-> Create change logs using git tag annotations
+> Create change logs, saving them in git tag annotations
 
-TODO: Some info about the module.
+This module relies on the defacto standard of semver like tags existing within
+a repository. i.e., v1.0.0, v1.5.0, v2.0.0, etc.
+
+It uses these tags to determine commits, find delta commits between tags, and
+to generate changelogs based on those delta commits. These changelogs, in
+markdown format, are then saved to the annotation of a git tag.
+
+You can push these tags up to origin, and if you are using Github, it will
+automatically show up in the "releases" section of the repo.
 
 ## Getting Started
 
@@ -16,11 +24,33 @@ Install the module with: `npm install git-tag-changelog`
 
 ## Usage
 
-TODO: How to use this module, examples.
+Installing this module exposes a CLI command you can use:
 
-## API
+```sh
+$ cl -h
+usage: cl [ACTION] [OPTIONS]
 
-See [API](/api.md)
+actions: 'list' | 'delta' | 'release' | 'nuclear'
+options:
+    -h, --help              Print this help and exit.
+    -d, --dry               Dry run. Does not actually execute command.
+    -l NUM, --logLevel=NUM  Logging level, valid values: 10, 20, 30, 40, 50.
+    --v1=ARG                For 'delta' action. A semver version.
+    --v2=ARG                For 'delta' action. A semver version.
+    --next=ARG              For 'release' action. The semver of the release.
+    --raw                   Display raw results instead.
+    --yesReally             Confirmation flag for the 'nuclear' action.
+
+sample usage:
+    * show all git tags that look like releases (semver):
+        cl list
+    * show semantic changes between two tags:
+        cl delta --v1=4.0.0 --v2=6.0.0
+    * create a changelog, and put it in annotation of a new git tag:
+        cl release --next=8.0.0
+    * DANGER: loop through all existing tags and recreate changelogs:
+        cl nuclear --yesReally=true
+```
 
 ## Contributing
 
