@@ -45,9 +45,9 @@ const cliOptions = [
         help: `For 'delta' action. A semver version.`
     },
     {
-        names: ['next'],
+        names: ['version'],
         type: 'string',
-        help: `For 'release' action. The semver of the release.`
+        help: `For 'release' and 'rerelease' action. The semver of the release.`
     },
     {
         names: ['raw'],
@@ -77,10 +77,12 @@ if (cliArgs.help === true) {
             '\nsample usage:\n' +
             '    * show all git tags that look like releases (semver):\n' +
             '        cl list\n' +
-            '    * show semantic changes between two tags:\n' +
+            '    * show semantic changes between two tags (order agnostic):\n' +
             '        cl delta --v1=4.0.0 --v2=6.0.0\n' +
-            '    * create a changelog, and put it in annotation of a new git tag:\n' +
-            '        cl release --next=8.0.0\n' +
+            '    * recreate a changelog for an existing version:\n' +
+            '        cl rerelease --version=7.7.0\n' +
+            '    * create a changelog for a new release, and put it in annotation of a new git tag:\n' +
+            '        cl release --version=8.0.0\n' +
             '    * DANGER: loop through all existing tags and recreate changelogs:\n' +
             '        cl nuclear --yesReally=true'
     );
