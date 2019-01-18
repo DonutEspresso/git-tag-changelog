@@ -37,19 +37,22 @@ options:
     -l NUM, --logLevel=NUM  Logging level, valid values: 10, 20, 30, 40, 50.
     --v1=ARG                For 'delta' action. A semver version.
     --v2=ARG                For 'delta' action. A semver version.
-    --next=ARG              For 'release' action. The semver of the release.
+    --version=ARG           For 'release' and 'rerelease' action. The semver of
+                            the release.
     --raw                   Display raw results instead.
     --yesReally             Confirmation flag for the 'nuclear' action.
 
 sample usage:
     * show all git tags that look like releases (semver):
         cl list
-    * show semantic changes between two tags:
+    * show semantic changes between two tags (order agnostic):
         cl delta --v1=4.0.0 --v2=6.0.0
-    * create a changelog, and put it in annotation of a new git tag:
-        cl release --next=8.0.0
+    * recreate a changelog for an existing version:
+        cl rerelease --version=7.7.0
+    * create a changelog for a new release, and put it in the annotation of a git tag:
+        cl release --version=8.0.0
     * DANGER: loop through all existing tags and recreate changelogs:
-        cl nuclear --yesReally=true
+        cl nuclear --yesReally
 ```
 
 ## Contributing
