@@ -28,22 +28,24 @@
     "semver"
   ],
   "devDependencies": {
-    "chai": "^4.1.2",
-    "conventional-changelog-angular": "^5.0.0",
-    "conventional-recommended-bump": "^4.0.0",
-    "coveralls": "^3.0.1",
-    "eslint": "^5.12.0",
-    "eslint-config-prettier": "^3.3.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "mocha": "^5.2.0",
-    "nyc": "^13.1.0",
-    "prettier": "^1.13.5"
+    "chai": "^4.2.0",
+    "conventional-changelog-angular": "^5.0.3",
+    "conventional-recommended-bump": "^6.0.0",
+    "coveralls": "^3.0.6",
+    "documentation": "^12.0.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
+    "prettier": "^1.18.2",
+    "unleash": "^2.0.1"
   },
   "dependencies": {
     "assert-plus": "^1.0.0",
     "dashdash": "^1.14.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "lumberjill": "^1.1.2",
-    "semver": "^5.6.0"
+    "semver": "^6.3.0"
   }
 }

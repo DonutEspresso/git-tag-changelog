@@ -81,12 +81,13 @@ githooks: $(GITHOOKS) ## Symlink githooks
 
 .PHONY: release-dry
 release-dry: $(NODE_MODULES) ## Dry run of `release` target
-	$(UNLEASH) -d --type=$(shell $(CONVENTIONAL_RECOMMENDED_BUMP) -p angular)
+	@$(UNLEASH) -d --type=$(shell $(CONVENTIONAL_RECOMMENDED_BUMP) -p angular)
 
 
 .PHONY: release
-release: $(NODE_MODULES) ## Versions, tags, and updates changelog based on commit messages
-	$(UNLEASH) --type=$(shell $(CONVENTIONAL_RECOMMENDED_BUMP) -p angular)
+release: $(NODE_MODULES) security ## Versions, tags, and updates changelog based on commit messages
+	@$(UNLEASH) --type=$(shell $(CONVENTIONAL_RECOMMENDED_BUMP) -p angular) --no-publish
+	@$(NPM) publish
 
 
 .PHONY: lint
@@ -102,8 +103,16 @@ lint-fix: $(NODE_MODULES) $(PRETTIER) $(ALL_FILES) ## Reprint code (prettier, es
 
 .PHONY: security
 security: $(NODE_MODULES) ## Check for dependency vulnerabilities.
-	@$(NPM) install --package-lock-only
-	@$(NPM) audit
+	@# remove lockfile, reinstall to get latest deps and regen lockfile
+	@rm $(YARN_LOCK) || true
+	@$(YARN)
+	@$(YARN) audit || EXIT_CODE=$$?; \
+	if [ $$EXIT_CODE -gt 15 ] ; then \
+		echo "'yarn audit' exited with error code $$EXIT_CODE, critical vulnerabilities found!"; \
+		exit 1; \
+	else \
+		echo "'yarn audit' exited with error code $$EXIT_CODE, no critical vulnerabilities found."; \
+	fi
 
 
 .PHONY: prepush
@@ -122,7 +131,7 @@ coverage: $(NODE_MODULES) $(NYC) ## Run unit tests with coverage reporting. Gene
 
 .PHONY: report-coverage ## Report unit test coverage to coveralls
 report-coverage: $(NODE_MODULES) $(NYC) ## Run unit tests with coverage reporting. Generates reports into /coverage.
-	@$(NYC) report --reporter=text-lcov make test | $(COVERALLS)
+	@$(NYC) report --reporter=text-lcov | $(COVERALLS)
 
 
 .PHONY: clean
