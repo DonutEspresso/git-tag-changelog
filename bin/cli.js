@@ -84,7 +84,7 @@ if (cliArgs.help === true) {
             '    * create a changelog for a new release, and put it in annotation of a new git tag:\n' +
             '        cl release --version=8.0.0\n' +
             '    * DANGER: loop through all existing tags and recreate changelogs:\n' +
-            '        cl nuclear --yesReally=true'
+            '        cl nuclear --yesReally'
     );
     process.exit();
 }
