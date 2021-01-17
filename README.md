@@ -8,15 +8,21 @@
 
 > Create change logs, saving them in git tag annotations
 
-This module relies on the defacto standard of semver like tags existing within
-a repository. i.e., v1.0.0, v1.5.0, v2.0.0, etc.
+This command line tool relies on the defacto standard of semver like tags
+existing within a repository. i.e., v1.0.0, v1.5.0, v2.0.0, etc.
 
 It uses these tags to determine commits, find delta commits between tags, and
-to generate changelogs based on those delta commits. These changelogs, in
-markdown format, are then saved to the annotation of a git tag.
+to generate changelogs based on those delta commits. The changelog is actually
+just a grouping of commit messages using the prefix string of the commit
+message, assuming you are using something like conventional commit. The grouped
+commit messages are then saved to the annotation of a git tag.
 
 You can push these tags up to origin, and if you are using Github, it will
 automatically show up in the "releases" section of the repo.
+
+Note that this tool does not take the place of something like conventional
+commit tooling or release tooling - it merely crawls your commit messages, and
+creates a "changelog" that is then attached to existing tags within your repo.
 
 ## Getting Started
 
