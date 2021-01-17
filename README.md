@@ -14,8 +14,9 @@ existing within a repository. i.e., v1.0.0, v1.5.0, v2.0.0, etc.
 It uses these tags to determine commits, find delta commits between tags, and
 to generate changelogs based on those delta commits. The changelog is actually
 just a grouping of commit messages using the prefix string of the commit
-message, assuming you are using something like conventional commit. The grouped
-commit messages are then saved to the annotation of a git tag.
+message, assuming you are using something like conventional commit. The
+changelog is generated in markdown format, and then are saved to the annotation
+of a git tag.
 
 You can push these tags up to origin, and if you are using Github, it will
 automatically show up in the "releases" section of the repo.
