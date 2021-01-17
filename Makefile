@@ -24,6 +24,7 @@ PACKAGE_LOCK	:= $(ROOT)/package-lock.json
 #
 # Tools and binaries
 #
+DOCUMENT	:= $(NODE_BIN)/documentation
 NPM		:= npm
 YARN		:= yarn
 ESLINT		:= $(NODE_BIN)/eslint
@@ -56,6 +57,11 @@ TEST_FILES	:= $(shell find $(TEST) -name '*.js' -type f)
 $(NODE_MODULES): $(PACKAGE_JSON) ## Install node_modules
 	@$(YARN)
 	@touch $(NODE_MODULES)
+
+
+.PHONY: docs
+docs: $(DOCUMENT) $(ALL_FILES)
+	@$(DOCUMENT) build $(LIB) -f md -o $(API_MD)
 
 
 .PHONY: help
@@ -121,6 +127,11 @@ test: $(NODE_MODULES) $(MOCHA) ## Run unit tests.
 .PHONY: coverage
 coverage: $(NODE_MODULES) $(NYC) ## Run unit tests with coverage reporting. Generates reports into /coverage.
 	@$(NYC) --reporter=html --reporter=text make test
+
+
+.PHONY: ci
+ci: $(NODE_MODULES) $(NYC) lint ## Run unit tests with coverage reporting. Generates reports into /coverage.
+	@$(NYC) --reporter=lcov make test
 
 
 .PHONY: clean
