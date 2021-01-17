@@ -1,7 +1,7 @@
 # git-tag-changelog
 
 [![NPM Version](https://img.shields.io/npm/v/git-tag-changelog.svg)](https://npmjs.org/package/git-tag-changelog)
-![Build](https://github.com/DonutEspresso/workflows/build/badge.svg?branch=master)
+![Build](https://github.com/DonutEspresso/workflows/node.js.yml/badge.svg?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/DonutEspresso/git-tag-changelog/badge.svg?branch=master)](https://coveralls.io/github/DonutEspresso/git-tag-changelog?branch=master)
 [![Dependency Status](https://david-dm.org/DonutEspresso/git-tag-changelog.svg)](https://david-dm.org/DonutEspresso/git-tag-changelog)
 [![devDependency Status](https://david-dm.org/DonutEspresso/git-tag-changelog/dev-status.svg)](https://david-dm.org/DonutEspresso/git-tag-changelog#info=devDependencies)
