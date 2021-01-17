@@ -129,9 +129,9 @@ coverage: $(NODE_MODULES) $(NYC) ## Run unit tests with coverage reporting. Gene
 	@$(NYC) --reporter=html --reporter=text make test
 
 
-.PHONY: report-coverage ## Report unit test coverage to coveralls
-report-coverage: $(NODE_MODULES) $(NYC) ## Run unit tests with coverage reporting. Generates reports into /coverage.
-	@$(NYC) report --reporter=text-lcov | $(COVERALLS)
+.PHONY: ci
+ci: $(NODE_MODULES) $(NYC) lint ## Run unit tests with coverage reporting. Generates reports into /coverage.
+	@$(NYC) --reporter=lcov make test
 
 
 .PHONY: clean
