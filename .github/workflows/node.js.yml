@@ -28,8 +28,3 @@ jobs:
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Security audit
-      uses: snyk/actions@0.3.0
-      env:
-        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
