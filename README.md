@@ -2,7 +2,7 @@
 
 [![NPM Version](https://img.shields.io/npm/v/git-tag-changelog.svg)](https://npmjs.org/package/git-tag-changelog)
 ![Build](https://github.com/DonutEspresso/git-tag-changelog/workflows/Node.js%20CI/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/DonutEspresso/git-tag-changelog/badge.svg?branch=master)](https://coveralls.io/github/DonutEspresso/git-tag-changelog?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/DonutEspresso/git-tag-changelog/badge.svg?branch=main)](https://coveralls.io/github/DonutEspresso/git-tag-changelog?branch=main)
 [![Dependency Status](https://david-dm.org/DonutEspresso/git-tag-changelog.svg)](https://david-dm.org/DonutEspresso/git-tag-changelog)
 [![devDependency Status](https://david-dm.org/DonutEspresso/git-tag-changelog/dev-status.svg)](https://david-dm.org/DonutEspresso/git-tag-changelog#info=devDependencies)
 
